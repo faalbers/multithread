@@ -1,0 +1,6 @@
+/.vscode
+/build
+/threadpool.cpp
+/ThreadPool.hpp
+/threadsvector.cpp
+/timediffthreads.cpp

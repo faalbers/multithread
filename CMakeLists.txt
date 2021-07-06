@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(multithread VERSION 0.1.0)
+
+include(CTest)
+enable_testing()
+
+add_executable(multithread main.cpp)
+add_executable(threadsvector threadsvector.cpp)
+add_executable(threadexample threadexample.cpp)
+add_executable(threadpool threadpool.cpp)
+add_executable(timediffthreads timediffthreads.cpp)
+add_executable(conditionvar conditionvar.cpp)
+add_executable(functorthread functorthread.cpp)
+add_executable(promisefuture promisefuture.cpp)
+add_executable(joindetach joindetach.cpp)
+add_executable(coresuse coresuse.cpp MyThread.cpp)
+add_executable(mutextest mutextest.cpp MyThread.cpp)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
