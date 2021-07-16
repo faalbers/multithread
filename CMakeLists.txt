@@ -15,6 +15,7 @@ add_executable(promisefuture promisefuture.cpp)
 add_executable(joindetach joindetach.cpp)
 add_executable(coresuse coresuse.cpp MyThread.cpp)
 add_executable(mutextest mutextest.cpp MyThread.cpp)
+add_executable(async async.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
