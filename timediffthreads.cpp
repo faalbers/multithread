@@ -4,7 +4,7 @@
 #include <mutex>
 #include <vector>
 #include <memory>
-#include <chrono>
+#include "Timer.hpp"
 
 std::mutex mcout;
 
@@ -50,18 +50,14 @@ int main()
 {
     std::vector<std::thread*> threads;
 
-    auto t1 = std::chrono::high_resolution_clock::now();
-
-    for (int i = 0; i < 64; i++) {
-        std::shared_ptr<MyThread> mt(new MyThread(i));
-        threads.push_back(new std::thread(&MyThread::run, mt));
+    {
+        Timer tr("Threads Run");
+        for (int i = 0; i < 64; i++) {
+            std::shared_ptr<MyThread> mt(new MyThread(i));
+            threads.push_back(new std::thread(&MyThread::run, mt));
+        }
+        for (std::thread *th : threads ) th->join();
     }
-    for (std::thread *th : threads ) th->join();
-
-    auto t2 = std::chrono::high_resolution_clock::now();
-
-    auto ms_int = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
-    std::cout << ms_int.count() << "ms\n";
 
     return 0;
 }
